@@ -1,0 +1,6 @@
+INSERT INTO cpus (brand, model, socket, clock_speed, number_of_cores, number_of_threads, tdp, price, updated, deleted) VALUES ('Intel', 'i9-12900K', 'FCLGA1700', 3.2, 16, 24, 125, 679.90, false, false);
+INSERT INTO cpus (brand, model, socket, clock_speed, number_of_cores, number_of_threads, tdp, price, updated, deleted) VALUES ('Intel', 'I7-12700K', 'FCLGA1700', 3.6, 12, 20, 125, 450.00, false, false);
+INSERT INTO cpus (brand, model, socket, clock_speed, number_of_cores, number_of_threads, tdp, price, updated, deleted) VALUES ('AMD', 'Ryzen 9 5900X', 'AM4', 3.7, 12, 24, 105, 340.00, false, false);
+INSERT INTO cpus (brand, model, socket, clock_speed, number_of_cores, number_of_threads, tdp, price, updated, deleted) VALUES ('Intel', 'i5-12600K', 'FCLGA1700', 2.8, 10, 16, 125, 305.62, false, false);
+INSERT INTO cpus (brand, model, socket, clock_speed, number_of_cores, number_of_threads, tdp, price, updated, deleted) VALUES ('AMD', 'Ryzen 7 5800X', 'AM4', 3.8, 8, 16, 105, 294.13, false, false);
+INSERT INTO cpus (brand, model, socket, clock_speed, number_of_cores, number_of_threads, tdp, price, updated, deleted) VALUES ('AMD', 'Ryzen 5 5600X', 'AM4', 3.7, 6, 12, 65, 200.00, false, false);
