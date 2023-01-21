@@ -24,7 +24,7 @@ public class SocketServiceImpl implements SocketService {
             List<Socket> socketList = socketRepository.findAll();
             return new ResponseEntity<>(socketList, HttpStatus.OK) ;
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when fetching all the sockets", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when fetching all the sockets", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -35,7 +35,7 @@ public class SocketServiceImpl implements SocketService {
             Socket socket = socketRepository.findById(id).orElse(null);
             return new ResponseEntity<>(socket, HttpStatus.OK) ;
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when looking for the socket with id: " + id, HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when looking for the socket with id: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -46,7 +46,7 @@ public class SocketServiceImpl implements SocketService {
             socketRepository.save(socket);
             return ResponseEntity.ok("Socket saved");
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when saving the socket", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when saving the socket", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -63,7 +63,7 @@ public class SocketServiceImpl implements SocketService {
             }
             return ResponseEntity.ok("Socket edited");
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when editing the socket", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when editing the socket", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -80,7 +80,7 @@ public class SocketServiceImpl implements SocketService {
             }
             return ResponseEntity.ok("Socket deleted");
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when deleting the socket", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when deleting the socket", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

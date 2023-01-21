@@ -24,7 +24,7 @@ public class CpuServiceImpl implements CpuService {
             List<Cpu> cpuList = cpuRepository.findAll();
             return new ResponseEntity<>(cpuList, HttpStatus.OK) ;
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when fetching all the cpus", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when fetching all the cpus", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -33,9 +33,13 @@ public class CpuServiceImpl implements CpuService {
     public ResponseEntity<?> getById(Integer id) {
         try {
             Cpu cpu = cpuRepository.findById(id).orElse(null);
-            return new ResponseEntity<>(cpu, HttpStatus.OK) ;
+            if(cpu != null) {
+                return new ResponseEntity<>(cpu, HttpStatus.OK) ;
+            } else {
+                return new ResponseEntity<>("Cpu not found with id: " + id, HttpStatus.NOT_FOUND);
+            }
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when looking for the cpu with id: " + id, HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when looking for the cpu with id: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -46,7 +50,7 @@ public class CpuServiceImpl implements CpuService {
             cpuRepository.save(cpu);
             return ResponseEntity.ok("Cpu saved");
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when saving the cpu", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when saving the cpu", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -63,7 +67,7 @@ public class CpuServiceImpl implements CpuService {
             }
             return ResponseEntity.ok("Cpu edited");
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when editing the cpu", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when editing the cpu", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -80,7 +84,7 @@ public class CpuServiceImpl implements CpuService {
             }
             return ResponseEntity.ok("Cpu deleted");
         } catch (Exception e) {
-            return new ResponseEntity<>("Something wrong happened when deleting the cpu", HttpStatus.OK);
+            return new ResponseEntity<>("Something wrong happened when deleting the cpu", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
