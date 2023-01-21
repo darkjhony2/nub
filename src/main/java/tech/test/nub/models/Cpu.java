@@ -11,14 +11,16 @@ public class Cpu {
     private Integer id;
     private String brand;
     private String model;
-    private String socket;
+    @OneToOne
+    @JoinColumn(name = "socket_id", referencedColumnName = "id")
+    private Socket socket;
     @Column(name = "clock_speed")
     private Double clockSpeed;
     @Column(name = "number_of_cores")
     private Integer numberOfCores;
     @Column(name = "number_of_threads")
     private Integer numberOfThreads;
-    private String Tdp;
+    private Double tdp;
     private BigDecimal price;
     private Boolean updated;
     private Boolean deleted;
@@ -26,7 +28,7 @@ public class Cpu {
     public Cpu() {
     }
 
-    public Cpu(Integer id, String brand, String model, String socket, Double clockSpeed, Integer numberOfCores, Integer numberOfThreads, String tdp, BigDecimal price, Boolean updated, Boolean deleted) {
+    public Cpu(Integer id, String brand, String model, Socket socket, Double clockSpeed, Integer numberOfCores, Integer numberOfThreads, Double tdp, BigDecimal price, Boolean updated, Boolean deleted) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -34,7 +36,7 @@ public class Cpu {
         this.clockSpeed = clockSpeed;
         this.numberOfCores = numberOfCores;
         this.numberOfThreads = numberOfThreads;
-        Tdp = tdp;
+        this.tdp = tdp;
         this.price = price;
         this.updated = updated;
         this.deleted = deleted;
@@ -80,11 +82,11 @@ public class Cpu {
         this.model = model;
     }
 
-    public String getSocket() {
+    public Socket getSocket() {
         return socket;
     }
 
-    public void setSocket(String socket) {
+    public void setSocket(Socket socket) {
         this.socket = socket;
     }
 
@@ -120,11 +122,11 @@ public class Cpu {
         this.price = price;
     }
 
-    public String getTdp() {
-        return Tdp;
+    public Double getTdp() {
+        return tdp;
     }
 
-    public void setTdp(String tdp) {
-        Tdp = tdp;
+    public void setTdp(Double tdp) {
+        this.tdp = tdp;
     }
 }
